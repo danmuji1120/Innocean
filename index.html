@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <div style="display: flex; justify-content: center">
+        <input type="text" placeholder="여기에 주소를 입력하세요." />
+        <button id="searchBtn">
+          <img class="search" src="search.svg" alt="" />
+        </button>
+      </div>
+    </nav>
+    <div class="main-box">
+      <div class="before" id="before">
+        <img class="logo" src="logo.svg" alt="" />
+        <h1 class="app-title">가짜뉴스 판독기</h1>
+      </div>
+      <div class="after" id="after" style="display: none">
+        <div class="item">
+          <img class="some" src="some.png" alt="" />
+        </div>
+        <div class="item">
+          <h2>
+            AI를 활용한 딥페이크, 딥보이스 기술까지! 진짜와 가짜가 혼재되어있는
+            세상에서 어떻게 가짜를 구분할 수 있을까?
+          </h2>
+        </div>
+        <div class="item">
+          <h3>조회수 120만회 3개월 전</h3>
+        </div>
+        <div class="item" id="aiItem">
+          <div class="ai">
+            <button class="aiBtn" id="aiBtn">
+              <div id="aiBefore" style="display: flex">
+                <img
+                  src="stick.svg"
+                  alt=""
+                  style="width: 30px; height: 30px; margin-right: 6px"
+                />
+                <p>AI 검사</p>
+              </div>
+              <div id="aiAfter" style="display: none">
+                <div class="loader"></div>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="item2" id="item2" style="display: none">
+          <div class="item2-in">
+            <div>
+              <h1>신뢰도 20%</h1>
+            </div>
+            <div class="wrapper">
+              <div class="progress-bar">
+                <div class="progress" style="width: 0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item2" id="item22" style="display: none">
+          <h1>
+            경고: AI 분석 결과, 해당 영상은 딥페이크로 생성된 투자 사기 영상일
+            가능성이 높습니다. 신뢰할 수 없는 정보에 주의하시기 바랍니다.
+          </h1>
+        </div>
+      </div>
+      <style></style>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const items = document.querySelectorAll(".item");
+          items.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.2}s`;
+          });
+        });
+      </script>
+    </div>
+    <script>
+      const searchBtn = document.getElementById("searchBtn");
+      const before = document.getElementById("before");
+      const after = document.getElementById("after");
+      // before.style.display = "none";
+      // after.style.display = "block";
+      searchBtn.addEventListener("click", () => {
+        setTimeout(() => {
+          before.style.display = "none";
+          after.style.display = "block";
+        }, 300); // 1000ms = 1초
+      });
+
+      const aiBtn = document.getElementById("aiBtn");
+      const aiBefore = document.getElementById("aiBefore");
+      const aiAfter = document.getElementById("aiAfter");
+      const aiItem = document.getElementById("aiItem");
+
+      const item2 = document.getElementById("item2");
+      const item22 = document.getElementById("item22");
+      document.addEventListener("DOMContentLoaded", function () {
+        const items = document.querySelectorAll(".item2");
+        items.forEach((item, index) => {
+          item.style.animationDelay = `${index * 0.2}s`;
+        });
+      });
+
+      aiBtn.addEventListener("click", () => {
+        aiBefore.style.display = "none";
+        aiAfter.style.display = "flex";
+        aiItem.classList.remove("item");
+
+        setTimeout(() => {
+          aiItem.classList.add("fadeOut");
+        }, 500);
+        setTimeout(() => {
+          aiItem.style.display = "none";
+          item2.style.display = "flex";
+          item22.style.display = "flex";
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
